@@ -4,7 +4,6 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Post
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
-
 import requests
 import os
 
