@@ -8,7 +8,7 @@ class Photo(models.Model):
     image = models.ImageField(default='photo/default.jpg', upload_to='photo')
     date = models.DateTimeField(default = timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    member = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    member = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.title

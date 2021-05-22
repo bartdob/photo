@@ -22,14 +22,31 @@
 
 
 
+
     <div class="row">
         {% for photo in photos %}
+            {% if photo.member.membership_type == enterprise %}
+            <p class="text-light">enterprise</p>
             <div class="col-sm">
-                <p class="text-light">member1:{{  }}</p>
+                <img class="rounded mx-auto d-block" style="max-height: 300;" src="{{ photo.image.url }}" alt="">
+                <p class="text-center text-light">{{photo.author}}</p>
+            </div>
+            {% elif photo.member.membership_type == premium %}
+            <p class="text-light">premium</p>
+            <div class="col-sm">
                 <img class="rounded mx-auto d-block" style="max-height: 200;" src="{{ photo.image.url }}" alt="">
                 <p class="text-center text-light">{{photo.author}}</p>
             </div>
-            {% endfor %}
+
+            {% else %}
+            <div class="col-sm">
+                <p class="text-light">basic</p>
+                <img class="rounded mx-auto d-block" style="max-height: 100;" src="{{ photo.image.url }}" alt="">
+                <p class="text-center text-light">{{photo.author}}</p>
+            </div>
+
+            {% endif %}
+        {% endfor %}
     </div>
     <div class="text-center">
         <button class="btn btn-light">

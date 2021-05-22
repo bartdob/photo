@@ -9,7 +9,7 @@ import os
 
 def home(request):
     context = {
-        'photos': Photo.objects.all()
+        'photos': Photo.objects.all(),
     }
     return render (request, 'index.html', context)
 
