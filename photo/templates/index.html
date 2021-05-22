@@ -4,6 +4,20 @@
 </head>
 
 <body class="bg-dark">
+    <nav class="text-center">
+        <p class="text-light">Hi {{user.username}}</p>
+        <div class="container text-right">
+            <form class="form-inline my-2 my-lg-0 text-right">
+                {% if user.is_authenticated %}
+                <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'photo-create' %}">add photo</a>
+                <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'logout' %}">logout</a>
+                {% else %}
+                <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'login' %}">login</a>
+
+                {% endif %}
+            </form>
+        </div>
+    </nav>
     <p class="text-center bg-light">Photos</p>
 
 
@@ -11,13 +25,16 @@
     <div class="row">
         {% for photo in photos %}
             <div class="col-sm">
+                <p class="text-light">member1:{{  }}</p>
                 <img class="rounded mx-auto d-block" style="max-height: 200;" src="{{ photo.image.url }}" alt="">
+                <p class="text-center text-light">{{photo.author}}</p>
             </div>
             {% endfor %}
     </div>
-
-    <button class="btn btn-default text-center">
-        <a href="{% url 'photo-create' %}">Add Pics</a>
-    </button>
+    <div class="text-center">
+        <button class="btn btn-light">
+            <a href="{% url 'photo-create' %}">Add Pics</a>
+        </button>
+    </div>
 </body>
 

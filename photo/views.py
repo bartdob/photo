@@ -11,7 +11,7 @@ def home(request):
     context = {
         'photos': Photo.objects.all()
     }
-    return render (request, 'photo.html', context)
+    return render (request, 'index.html', context)
 
 class PhotoListView(ListView):
     model = Photo
@@ -33,7 +33,7 @@ class UserPhotoListView(ListView):
 class PhotoDetailView(DetailView):
     model = Photo
 
-class PhotoCreateView(LoginRequiredMixin ,CreateView):
+class PhotoCreateView(LoginRequiredMixin, CreateView):
     model = Photo
     fields = ['title', 'image']
 
