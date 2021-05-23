@@ -21,7 +21,7 @@
     <p class="text-center bg-light">Photos</p>
 
 
-
+<!-- display foto depends on membership type -->
 
     <div class="row">
         {% for photo in photos %}
@@ -48,6 +48,9 @@
             {% endif %}
         {% endfor %}
     </div>
+
+<!-- end -->
+
     <div class="text-center">
         <button class="btn btn-light">
             <a href="{% url 'photo-create' %}">Add Pics</a>
