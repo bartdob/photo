@@ -3,10 +3,32 @@
 <article class="media content-section">
     <div class="media-body">
       <div class="article-metadata">
-        <a class="mr-2" href="{% url 'user-photos' object.author.username %}">{{ object.author }}</a>
-        <small class="text-muted">{{ object.date|date:"F d - Y" }}</small>
+        {% if photo.member.membership_type == enterprise %}
+        <p class="text-light">enterprise</p>
+        <div class="col-sm">
+            <img class="rounded mx-auto d-block" style="max-height: 600;" src="{{ photo.image.url }}" alt="">
+            <p class="text-center text-light">user: {{object.author}}</p>
+            <a class="mr-2" href="{% url 'user-photos' object.author.username %}">others photos:{{ object.author }}</a>
+        </div>
+        {% elif photo.member.membership_type == premium %}
+        <p class="text-light">premium</p>
+        <div class="col-sm">
+            <img class="rounded mx-auto d-block" style="max-height: 400;" src="{{ photo.image.url }}" alt="">
+            <p class="text-center text-light">user: {{object.author}}</p>
+            <a class="mr-2" href="{% url 'user-photos' object.author.username %}">others photos:{{ object.author }}</a>
+        </div>
+
+        {% else %}
+        <div class="col-sm">
+            <p class="text-light">basic</p>
+            <img class="rounded mx-auto d-block" style="max-height: 200;" src="{{ photo.image.url }}" alt="">
+            <p class="text-center text-light">user: {{object.author}}</p>
+            <a class="mr-2" href="{% url 'user-photos' object.author.username %}">others photos:{{ object.author }}</a>
+        </div>
+
+        {% endif %}
+
       </div>
-      <img src="{{ photo.image.url }}" alt="">
-      <h2 class="article-title ml-2"> {{object.title}}</h2>
+      <h2 class="article-title ml-2">photo title: {{object.title}}</h2>
     </div>
 </article>
